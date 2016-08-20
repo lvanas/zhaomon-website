@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320px,user-scalable=no,initial-scale=1"/>
+<title>document</title>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/index.css"/>
+<script>
+window.onload = window.onresize = function(){
+
+	var oBj=document.getElementById('bj');
+	var oLogin=document.getElementById('login');
+	var oUsername=document.getElementById('username');
+	var oPassword=document.getElementById('password');
+
+	var oH=document.documentElement.clientHeight;
+	var oW=document.documentElement.clientWidth;
+
+	if(oW>=720){
+		oBj.style.height=oH/32+'rem';
+		oBj.style.background='url(images/back.jpg) no-repeat 0 0';
+		oBj.style.backgroundSize='100%';
+		document.documentElement.style.fontSize = 32/1920*document.documentElement.clientWidth + "px";
+		oLogin.style.marginTop=-3.125+'rem';
+	}else {
+		oBj.style.height=oH+'px';
+		oBj.style.background='url(images/back_720.jpg) no-repeat 0 0';
+		oBj.style.backgroundSize='100%';
+		document.documentElement.style.fontSize = 32/720*document.documentElement.clientWidth + "px";
+		oLogin.style.marginTop=-(oW*0.03)+'rem';
+	}
+
+	oUsername.onfocus=function () {
+		if(this.value=='User Name'){
+			this.value='';
+		}
+	};
+	oUsername.onblur=function () {
+		if(this.value==''){
+			this.value='User Name';
+		}
+	};
+
+	oPassword.onfocus=function () {
+		if(this.value=='Password'){
+			this.value='';
+		}
+		this.type='password';
+	};
+	oPassword.onblur=function () {
+		if(this.value==''){
+			this.type='text';
+			this.value='Password';
+		}
+	}; 
+};
+</script>
+</head>
+<body>
+	<div class="bj" id="bj">
+		<div class="login" id="login">
+			<div class="vvip">
+				<div class="img"></div>
+			</div>
+			<div class="user-name clearfix">
+				<img src="images/username.png" alt="图片"/>
+				<input type="text" name="username" value="User Name" id="username" />
+			</div>
+			<div class="pass-word clearfix">
+				<img src="images/password.png" alt="图片"/>
+				<input type="text" name="password" value="Password" id="password"/>
+			</div>
+			<div class="login-btn">
+				<a href="javascript:;">LOGIN</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
